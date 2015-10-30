@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>MAWK Arduino Node.js Socket.io</title>
+	<script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        
+        var socket = io.connect("http://localhost:3000/", {
+            "reconnect" : true,
+            "reconnection delay" : 500,
+            "max reconnection attempts" : 10
+        });
+			
+        socket.on("connect", function(data) {
+            socket.emit("message", "Connected - " + (new Date()).toString());
+        });
+			     
+        socket.on("message", function (data) {
+            var to = document.getElementById('value');  
+            to.innerHTML = data;
+		});
+        
+	</script>
+    <style>
+        body {background-color:lightblue}
+        h2   {font-size:70%}
+        p    {color:red;
+              font-size:500%;
+             }
+</style>
+</head>
+<body>
+    <center>
+        
+	<h1>MAWK Arduino Node.js Socket.io</h1>
+    
+    <p id="value" value=value>WARTOSC</p>
+    <br></br>
+    <h2>http://cineksuw.hol.es/</h2>
+       
+    
+    </center>
+</body>
+</html>
